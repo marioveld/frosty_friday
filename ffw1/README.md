@@ -6,7 +6,7 @@ These challanges can be a lot of fun so be sure to take a look!
 
 This is my solution to [Frosty Friday Week 1][ffw1].
 
-## Taking a look
+## Exploring the Amazon S3 bucket
 
 In the challange we are asked to take data
 in an Amazon S3 bucket
@@ -15,8 +15,6 @@ using a Snowflake `STAGE`.
 
 The Amazon S3 bucket can be referecend from
 `s3://frostyfridaychallenges/challenge_1/`.
-
-## Solution
 
 After making a stage with the Amazon S3 bucket URL,
 it is possible to see which files are contained in the bucket:
