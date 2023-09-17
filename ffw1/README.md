@@ -1,19 +1,19 @@
 # A solution to Frosty Friday Week 1
 
-[Frosty Friday][fros] is a weekly Snowflake challange series
+[Frosty Friday][fros] is a weekly Snowflake challenge series
 created by Christopher Marland and Mike Droog.
-These challanges can be a lot of fun so be sure to take a look!
+These challenges can be a lot of fun so be sure to take a look!
 
 This is my solution to [Frosty Friday Week 1][ffw1].
 
 ## Exploring the Amazon S3 bucket
 
-In the challange we are asked to take data
+In the challenge we are asked to take data
 in an Amazon S3 bucket
 and load it to a `TABLE` in Snowflake,
 using a Snowflake `STAGE`.
 
-The Amazon S3 bucket can be referecend from
+The Amazon S3 bucket can be referenced from
 `s3://frostyfridaychallenges/challenge_1/`.
 
 After making a stage with the Amazon S3 bucket URL,
@@ -70,7 +70,7 @@ curl 'http://frostyfridaychallenges.s3.amazonaws.com/challenge_1/3.csv'
 
 There seems to be a header `result`
 and the values `NULL` and `totally_empty` seem
-like something we should substitue with SQL NULL's.
+like something we should substitute with SQL NULL's.
 
 ## Solution
 
