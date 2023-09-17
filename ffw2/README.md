@@ -1,4 +1,4 @@
-# A solution to Frosty Friday Week 1
+# A solution to Frosty Friday Week 2
 
 [Frosty Friday][fros] is a weekly Snowflake challenge series
 created by Christopher Marland and Mike Droog.
