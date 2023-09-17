@@ -1,7 +1,7 @@
 /* FROSTY FRIDAY WEEK 1 */
 
-/* Be sure to set a database, schema and warehouse
-beforehand, with `USE DATABASE` etc. statements.
+/* Be sure to set a role, database, schema and warehouse
+beforehand, with `USE ROLE` etc. statements.
 */
 
 CREATE OR REPLACE TEMPORARY STAGE 
