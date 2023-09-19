@@ -7,3 +7,6 @@ These challenges can be a lot of fun so be sure to take a look!
 This is my solution to [Frosty Friday Week 2][ffw3].
 
 ## Challenge
+
+[fros]: https://frostyfriday.org/
+[ffw3]: https://frostyfriday.org/blog/2022/07/15/week-3-basic/
