@@ -4,16 +4,6 @@
 beforehand, with `USE DATABASE` etc. statements.
 */
 
-/* The FILE FORMAT is necesary for the later
-INFER_SCHEMA functions:
- */
-
-CREATE OR REPLACE FILE FORMAT
-    ffw3_format
-    TYPE = CSV
-    PARSE_HEADER = TRUE
-    ;
-
 CREATE OR REPLACE TEMPORARY STAGE
     ffw3_stage
     URL = 's3://frostyfridaychallenges/challenge_3/'
@@ -21,6 +11,16 @@ CREATE OR REPLACE TEMPORARY STAGE
         TYPE = CSV
         SKIP_HEADER = 1
     )
+    ;
+
+/* The FILE FORMAT is necesary for the
+INFER_SCHEMA in the next part:
+ */
+
+CREATE OR REPLACE FILE FORMAT
+    ffw3_format
+    TYPE = CSV
+    PARSE_HEADER = TRUE
     ;
 
 /* We will infer the columns for both tables
@@ -41,6 +41,7 @@ CREATE OR REPLACE TEMPORARY TABLE
 
         )
     ;
+
 CREATE OR REPLACE TEMPORARY TABLE
     ffw3_keywords
     USING TEMPLATE (
@@ -69,7 +70,6 @@ COPY INTO ffw3_keywords
     FROM @ffw3_stage
     FILES = ('keywords.csv')
     ;
-
 
 CREATE OR REPLACE TEMPORARY TABLE
     ffw3
