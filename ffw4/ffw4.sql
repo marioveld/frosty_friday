@@ -4,6 +4,11 @@
 beforehand, with `USE ROLE` etc. statements.
 */
 
+/* We can strip the outer array
+so we have an operation less we need to do
+later on:
+*/
+
 CREATE OR REPLACE TEMPORARY STAGE
     ffw4_stage
     URL = 's3://frostyfridaychallenges/challenge_4/Spanish_Monarchs.json'
@@ -27,6 +32,7 @@ SELECT
             , monarchs.index ASC
         ) AS
       inter_house_id
+    , top.$1['Era']::varchar AS era
     , houses.value['House']::varchar
         AS 
       house
@@ -53,8 +59,36 @@ SELECT
     , monarchs.value['Start of Reign']::date
         AS 
       start_of_reign
-    , houses.*
-FROM @ffw4_stage
+    , IFNULL(
+        monarchs.value['Consort\\/Queen Consort'][0]
+        , monarchs.value['Consort\\/Queen Consort']::varchar
+        ) AS
+      queen_or_queen_consort_1
+    , monarchs.value['Consort\\/Queen Consort'][1]::varchar
+        AS
+      queen_or_queen_consort_2
+    , monarchs.value['Consort\\/Queen Consort'][2]::varchar
+        AS
+      queen_or_queen_consort_3
+    , monarchs.value['End of Reign']::date
+        AS
+      end_of_reign
+    , monarchs.value['Duration']::varchar
+        AS
+      duration
+    , monarchs.value['Death']::date
+        AS
+      death
+    , monarchs.value['Age at Time of Death']::varchar
+        AS
+      age_at_time_of_death_years
+    , monarchs.value['Place of Death']::varchar
+        AS
+      place_of_death
+    , monarchs.value['Burial Place']::varchar
+        AS
+      burial_place
+FROM @ffw4_stage AS top
 JOIN LATERAL FLATTEN(
     input   => $1
     , path  => 'Houses'
@@ -66,18 +100,3 @@ JOIN LATERAL FLATTEN(
 ORDER BY 
     id
 ;
-
-/* FIELDS
- "Age at Time of Death"
-  "Birth"
-  "Burial Place"
-  "Consort\\/Queen Consort" []
-  "Death"
-  "Duration"
-  "End of Reign"
-  "Name"
-  "Nickname"
-  "Place of Birth"
-  "Place of Death"
-  "Start of Reign"
- */
