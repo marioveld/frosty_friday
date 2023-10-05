@@ -11,8 +11,8 @@ fill in the values 1 to 500 with the ROW_NUMBER() window function:
 
 CREATE OR REPLACE TEMPORARY TABLE
     ff_week_5
-    AS SELECT 
-        ROW_NUMBER() OVER (ORDER BY SEQ1()) AS start_int
+    AS SELECT
+        ROW_NUMBER() OVER (ORDER BY TRUE) AS start_int
     FROM TABLE(GENERATOR(ROWCOUNT => 500))
     ;
 
@@ -36,4 +36,6 @@ $$;
 
 SELECT start_int, timesthree(start_int)
 FROM FF_week_5
+ORDER BY
+    start_int
 ;
