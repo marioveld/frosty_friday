@@ -4,9 +4,9 @@
 beforehand, with `USE ROLE` etc. statements.
 */
 
-/* We use the GENERATOR table function in combination
-with SEQ1 to create rows and then we
-fill in the values 1 to 500 with the ROW_NUMBER() window function:
+/* We use the GENERATOR table function to create empty rows 
+and then we fill in the values 1 to 500 
+with the ROW_NUMBER() window function:
 */
 
 CREATE OR REPLACE TEMPORARY TABLE
