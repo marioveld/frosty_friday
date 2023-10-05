@@ -1,4 +1,4 @@
-# A solution to Frosty Friday Week 4
+# A solution to Frosty Friday Week 5
 
 [Frosty Friday][fros] is a weekly Snowflake challenge series
 created by Christopher Marland and Mike Droog.
@@ -112,4 +112,4 @@ ORDER BY
 And we are done!
 
 [fros]: https://frostyfriday.org/
-[ffw4]: https://frostyfriday.org/blog/2022/07/15/week-5-basic/
+[ffw5]: https://frostyfriday.org/blog/2022/07/15/week-5-basic/
