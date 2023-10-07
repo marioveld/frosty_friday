@@ -18,3 +18,5 @@ Usually, it would just be enough to `USE`
 a role, a database and a warehouse prior to
 executing the statements.
 Naturally, this cannot always be the case though!
+
+[fros]: https://frostyfriday.org/
