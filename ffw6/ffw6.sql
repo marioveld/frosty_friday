@@ -4,6 +4,11 @@
 beforehand, with `USE ROLE` etc. statements.
 */
 
+/* The CSV contains fields that are mostly enclosed
+by double quotes and sometimes contain comma's.
+That is why we need `FIELD_OPTIONALLY_ENCLOSED_BY ='"'`:
+*/
+
 CREATE OR REPLACE TEMPORARY STAGE
     nations_regions_stage
     URL = 's3://frostyfridaychallenges/challenge_6/nations_and_regions.csv'
@@ -23,6 +28,10 @@ CREATE OR REPLACE TEMPORARY STAGE
         FIELD_OPTIONALLY_ENCLOSED_BY = '"'
         )
     ;
+
+/* We need a FILE FORMAT that parses headers
+for use with the INFER_SCHEMA() table function:
+*/
 
 CREATE OR REPLACE TEMPORARY FILE FORMAT
     ffw6_format
@@ -72,6 +81,11 @@ select * from nations_regions;
 
 WITH nat_reg_parts AS (
 
+    /* First we combine all the points,
+    in the separate parts of nations or regions,
+    together as a string:
+    */
+
     SELECT 
         nation_or_region_name
         , '((' 
@@ -87,6 +101,12 @@ WITH nat_reg_parts AS (
     )
 
 , nat_reg_multipolygons AS (
+
+    /* Now, we can combine all the parts
+    to form a MultiPolygon string
+    that conforms to the
+    *Well-known text representation of geometry*:
+    */
 
     SELECT 
         nation_or_region_name
@@ -135,6 +155,14 @@ WITH nat_reg_parts AS (
         constituency
 
     )
+
+
+/* We use ST_INTERSECTS as
+a filter here,
+retaining only rows where
+the regions or nation intersects
+with a constituency:
+*/
 
 SELECT
     nation_or_region_name
