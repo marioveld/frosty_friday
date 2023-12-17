@@ -12,7 +12,5 @@ the *Access History*, *Tag References* and
 *Query History* views in the *Account Usage* schema.
 I also provided a short version of that query.
 
-## Challenge
-
 [fros]: https://frostyfriday.org/
 [ffw7]: https://frostyfriday.org/blog/2022/07/29/week-7-intermediate/
