@@ -7,4 +7,4 @@ These challenges can be a lot of fun so be sure to take a look!
 This is my solution to [Frosty Friday Week 8][ffw8].
 
 [fros]: https://frostyfriday.org/
-[ffw71]: https://frostyfriday.org/blog/2022/08/05/week-8-basic/
+[ffw8]: https://frostyfriday.org/blog/2022/08/05/week-8-basic/
